@@ -3,7 +3,7 @@ const fs = require("fs")
 const cors = require("cors")
 
 const app = express()
-const port = 3100
+const port = process.env.port || 3100
 
 app.use(cors())
 
@@ -32,7 +32,7 @@ app.get('/product/:id', (req, res)=> {
 })
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`Server is running on port: ${port}`)
   })
 
   //    FUNGSI UNTUK MENGAMBIL DATA JSON
