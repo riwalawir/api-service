@@ -12,17 +12,17 @@ app.get('/', (req, res) => {
 })
 
 app.get('/banner', (req, res)=> {
-    const data = getData("./data/Banner.json")
+    const data = getData("/data/Banner.json")
     res.json(data)
 })
 
 app.get('/category', (req, res)=> {
-    const data = getData("./data/Category.json")
+    const data = getData("/data/Category.json")
     res.json(data)
 })
 
 app.get('/product', (req, res)=> {
-    const data = getData("./data/Product.json")
+    const data = getData("/data/Product.json")
     res.json(data)
 })
 
@@ -43,7 +43,7 @@ app.listen(port, () => {
 
   //    FUNGSI UNTUK MENCARI DATA SESUAI YANG DIMINTA OLEH USER
   const findData = (id)=> {
-    const dataProduct = getData("./data/Product.json")
+    const dataProduct = getData("/data/Product.json")
     const findProduct = dataProduct.find((data)=> data.id == parseInt(id))
     
     if(!findProduct) {
