@@ -1,6 +1,7 @@
 const express = require("express")
 const fs = require("fs")
 const cors = require("cors")
+const ph = require("path")
 
 const app = express()
 const port = process.env.port || 3100
@@ -12,17 +13,17 @@ app.get('/', (req, res) => {
 })
 
 app.get('/banner', (req, res)=> {
-    const data = getData("/data/Banner.json")
+    const data = getData("./data/Banner.json")
     res.json(data)
 })
 
 app.get('/category', (req, res)=> {
-    const data = getData("/data/Category.json")
+    const data = getData("./data/Category.json")
     res.json(data)
 })
 
 app.get('/product', (req, res)=> {
-    const data = getData("/data/Product.json")
+    const data = getData("./data/Product.json")
     res.json(data)
 })
 
@@ -37,13 +38,13 @@ app.listen(port, () => {
 
   //    FUNGSI UNTUK MENGAMBIL DATA JSON
   const getData = (path)=> {
-    const data = fs.readFileSync(process.cwd() + path, "utf-8", (err, data)=> data)
+    const data = fs.readFileSync(ph.resolve(path), "utf-8", (err, data)=> data)
     return JSON.parse(data)
   }
 
   //    FUNGSI UNTUK MENCARI DATA SESUAI YANG DIMINTA OLEH USER
   const findData = (id)=> {
-    const dataProduct = getData("/data/Product.json")
+    const dataProduct = getData("./data/Product.json")
     const findProduct = dataProduct.find((data)=> data.id == parseInt(id))
     
     if(!findProduct) {
