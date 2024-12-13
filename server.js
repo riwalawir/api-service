@@ -37,7 +37,7 @@ app.listen(port, () => {
 
   //    FUNGSI UNTUK MENGAMBIL DATA JSON
   const getData = (path)=> {
-    const data = fs.readFileSync(path, "utf-8", (err, data)=> data)
+    const data = fs.readFileSync(process.cwd() + path, "utf-8", (err, data)=> data)
     return JSON.parse(data)
   }
 
